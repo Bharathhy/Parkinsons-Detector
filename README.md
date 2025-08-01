@@ -1,50 +1,143 @@
-### Parkinson's Disease Predictor
+# Product Management System
 
-![home](https://user-images.githubusercontent.com/64016811/198979528-deb039b2-abde-49a8-9a2a-832a8c1eb19d.png)
+A modern, full-stack web application for managing product details and descriptions. Built with Node.js/Express backend and vanilla JavaScript frontend.
 
+## Features
 
-### Problem : 
+### Backend Features
+- **RESTful API** with Express.js
+- **CRUD Operations** for products (Create, Read, Update, Delete)
+- **Data Validation** with proper error handling
+- **In-memory Storage** (easily extendable to database)
+- **CORS Support** for cross-origin requests
 
-Heart Attack is a chronic health condition that affects how your heart pumps blood throughout your body. It is not a disease but a phenomena, where there are sudden cardiac arrests. Having healthy, low-cholesterol food, and being active can really help in reducing the chances of cardiac arrest. 
+### Frontend Features
+- **Modern, Responsive Design** with CSS Grid and Flexbox
+- **Real-time Updates** with dynamic product display
+- **Form Validation** with visual feedback
+- **Modal Dialogs** for editing products
+- **Toast Notifications** for user feedback
+- **Loading States** and error handling
+- **Mobile-First Design** with responsive breakpoints
 
-### Solution:
+### Product Management
+- Add new products with name, description, price, category, and image
+- Edit existing products with inline form
+- Delete products with confirmation
+- View all products in a beautiful grid layout
+- Automatic image fallback for broken URLs
+- Real-time product count display
 
-This Web app will help you to predict whether a person has chances of cardiac arrest or is prone to get it in future by analysing the values of several features using the Decision Tree Classifier.
+## Installation & Setup
 
-### Idea: 
-Building an application that can predict the occurrence of a cardiac arrest or the possible causes of it by indicating the highly relevant factors. 
+1. **Install Dependencies**
+   ```bash
+   npm install
+   ```
 
-### Layout
+2. **Start the Server**
+   ```bash
+   npm start
+   ```
+   or for development with auto-restart:
+   ```bash
+   npm run dev
+   ```
+
+3. **Access the Application**
+   Open your browser and go to: `http://localhost:3000`
+
+## API Endpoints
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | Get all products |
+| GET | `/api/products/:id` | Get single product |
+| POST | `/api/products` | Create new product |
+| PUT | `/api/products/:id` | Update existing product |
+| DELETE | `/api/products/:id` | Delete product |
+
+### Example API Usage
+
+**Add a Product:**
+```bash
+curl -X POST http://localhost:3000/api/products \
+  -H "Content-Type: application/json" \
+  -d '{
+    "name": "Sample Product",
+    "description": "This is a sample product description",
+    "price": 29.99,
+    "category": "Electronics",
+    "image": "https://example.com/image.jpg"
+  }'
+```
+
+**Get All Products:**
+```bash
+curl http://localhost:3000/api/products
+```
+
+## Project Structure
 
 ```
-├───images
-├───Tabs
-│   └───__pycache__
-|   └─── home.py
-|   └─── data.py
-|   └─── predict.py
-|   └─── visualize.py
-|   └─── about.py
-└───__pycache__
-└─── main.py
-└─── web_functions.py
-└─── requirements.txt
-└─── Procfile
-└─── setup.sh
+├── server.js              # Express server and API routes
+├── package.json           # Project dependencies
+├── public/                # Frontend files
+│   ├── index.html         # Main HTML page
+│   ├── styles.css         # CSS styles
+│   └── script.js          # JavaScript functionality
+└── README.md              # Project documentation
 ```
 
+## Technologies Used
 
-### Note:
-**Incase the application demo doesn't start real quick, you can get an idea about how it looks like from the screenshots**
+### Backend
+- **Node.js** - JavaScript runtime
+- **Express.js** - Web framework
+- **CORS** - Cross-origin resource sharing
+- **Body-Parser** - Request body parsing
 
-![image](https://user-images.githubusercontent.com/64016811/198981322-e41c7a73-bcd1-4902-b00d-53fe81277ea4.png)
-![image](https://user-images.githubusercontent.com/64016811/198981403-7f0266c3-51e6-41c4-b4d4-73e169ac316c.png)
-![image](https://user-images.githubusercontent.com/64016811/198981647-ebf69696-e2e9-4430-b321-96879a65dd46.png)
-![image](https://user-images.githubusercontent.com/64016811/198981810-9bcb3159-ee17-46d1-9cb5-b9a32e7d03d3.png)
-![image](https://user-images.githubusercontent.com/64016811/198981916-b6425efb-b48a-4b72-95cb-733623da1c58.png)
-![image](https://user-images.githubusercontent.com/64016811/198981964-64c397d9-aeed-45ff-ac3a-ed96e8c3059e.png)
+### Frontend
+- **HTML5** - Semantic markup
+- **CSS3** - Modern styling with Grid/Flexbox
+- **JavaScript (ES6+)** - Client-side functionality
+- **Font Awesome** - Icons
+- **Fetch API** - HTTP requests
 
-### Made with 💙 by:
-![maker](https://user-images.githubusercontent.com/64016811/198821378-09bf5224-a537-4154-9df9-d9b29da95af7.jpg)
+## Development Features
 
-## MAINAK CHAUDHURI
+- **Hot Reloading** with nodemon
+- **Error Handling** throughout the application
+- **Input Validation** on both frontend and backend
+- **Responsive Design** for all device sizes
+- **Accessibility** features with proper ARIA labels
+- **Security** considerations with input sanitization
+
+## Sample Data
+
+The application comes with 2 sample products pre-loaded:
+- Sample Product 1 (Electronics)
+- Sample Product 2 (Home & Garden)
+
+## Browser Support
+
+- Chrome (latest)
+- Firefox (latest)
+- Safari (latest)
+- Edge (latest)
+
+## License
+
+MIT License - feel free to use this project for learning or as a starting point for your own applications.
+
+---
+
+## Getting Started
+
+1. Clone or download this project
+2. Run `npm install` to install dependencies
+3. Run `npm start` to start the server
+4. Open `http://localhost:3000` in your browser
+5. Start adding your products!
+
+The backend provides a RESTful API, and the frontend automatically updates when you add, edit, or delete products. All data is stored in memory, so it will reset when you restart the server (perfect for testing and development).
