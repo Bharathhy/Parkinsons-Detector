@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1><i class="fas fa-box"></i> Product Management System</h1>
+                <p>Manage your products with ease</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Add Product Section -->
+            <section class="add-product-section">
+                <div class="card">
+                    <div class="card-header">
+                        <h2><i class="fas fa-plus-circle"></i> Add New Product</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="productForm" class="product-form">
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="productName">Product Name *</label>
+                                    <input type="text" id="productName" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productPrice">Price ($)</label>
+                                    <input type="number" id="productPrice" name="price" step="0.01" min="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productCategory">Category</label>
+                                    <select id="productCategory" name="category">
+                                        <option value="">Select Category</option>
+                                        <option value="Electronics">Electronics</option>
+                                        <option value="Clothing">Clothing</option>
+                                        <option value="Home & Garden">Home & Garden</option>
+                                        <option value="Sports">Sports</option>
+                                        <option value="Books">Books</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="productImage">Image URL</label>
+                                    <input type="url" id="productImage" name="image" placeholder="https://example.com/image.jpg">
+                                </div>
+                            </div>
+                            <div class="form-group full-width">
+                                <label for="productDescription">Description *</label>
+                                <textarea id="productDescription" name="description" rows="4" required placeholder="Enter detailed product description..."></textarea>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-primary" id="submitBtn">
+                                    <i class="fas fa-save"></i> Add Product
+                                </button>
+                                <button type="button" class="btn btn-secondary" id="cancelBtn">
+                                    <i class="fas fa-times"></i> Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Products Display Section -->
+            <section class="products-section">
+                <div class="section-header">
+                    <h2><i class="fas fa-list"></i> Products</h2>
+                    <div class="product-stats">
+                        <span id="productCount">Loading...</span>
+                    </div>
+                </div>
+                
+                <!-- Loading Spinner -->
+                <div id="loadingSpinner" class="loading-spinner">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Loading products...</p>
+                </div>
+
+                <!-- Products Grid -->
+                <div id="productsGrid" class="products-grid">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+
+                <!-- No Products Message -->
+                <div id="noProducts" class="no-products" style="display: none;">
+                    <i class="fas fa-box-open"></i>
+                    <h3>No Products Found</h3>
+                    <p>Start by adding your first product above!</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Toast Notifications -->
+        <div id="toastContainer" class="toast-container"></div>
+
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Edit Product</h3>
+                    <button class="modal-close" id="closeModal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form id="editProductForm" class="product-form">
+                        <input type="hidden" id="editProductId">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="editProductName">Product Name *</label>
+                                <input type="text" id="editProductName" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editProductPrice">Price ($)</label>
+                                <input type="number" id="editProductPrice" name="price" step="0.01" min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="editProductCategory">Category</label>
+                                <select id="editProductCategory" name="category">
+                                    <option value="">Select Category</option>
+                                    <option value="Electronics">Electronics</option>
+                                    <option value="Clothing">Clothing</option>
+                                    <option value="Home & Garden">Home & Garden</option>
+                                    <option value="Sports">Sports</option>
+                                    <option value="Books">Books</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editProductImage">Image URL</label>
+                                <input type="url" id="editProductImage" name="image">
+                            </div>
+                        </div>
+                        <div class="form-group full-width">
+                            <label for="editProductDescription">Description *</label>
+                            <textarea id="editProductDescription" name="description" rows="4" required></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Product
+                            </button>
+                            <button type="button" class="btn btn-secondary" id="cancelEdit">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
